@@ -1,0 +1,16 @@
+{% extends 'templates/lov.html' %}
+
+{% block lov_cc %} 
+<center style="padding-top: 100px;">
+        <h4>This is LOV cc Page</h4>
+    
+        <form method="POST">
+            <label>Enter Your age </label>
+            <textarea name="txt_age"></textarea> <br/>
+            <input type="submit" value="save" name="submit" class="au-btn au-btn-icon au-btn--blue">
+        </form>
+        <h1>ans = {{age}}</h1>
+</center> 
+
+
+{% endblock %}
