@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, url_for, flash, redirect
-import json   
+import json
 app=Flask(__name__)
 
 @app.route('/')
@@ -40,21 +40,41 @@ def submit_LOV():
         ref_table_Col_to_qc=request.form['ref_table_Col_to_qc']
         case_sensitivity=request.form['case_sensitivity']
 
-        # source_table_ip_mode=request.form['source_table_ip_mode']
-        dict_LOV_checks={
-             "source_table_name" : source_table_name,
-             "source_table_ip_mode" : source_table_ip_mode, 
-             "source_table_Col_to_qc" : source_table_Col_to_qc,
-             "ref_table_name" : ref_table_name,
-             "ref_table_nref_table_ip_modeame" : ref_table_nref_table_ip_modeame,
-             "ref_table_Col_to_qc" : ref_table_Col_to_qc,
-             "case_sensitivity" : case_sensitivity
+
+        
+
+        # fetch data from UI and store that in a dictionary
+        dict_LOV_checks ={ "LOV_checks" : [{
+                "source_table_name" : source_table_name,
+                "source_table_ip_mode" : source_table_ip_mode, 
+                "source_table_Col_to_qc" : source_table_Col_to_qc,
+                "ref_table_name" : ref_table_name,
+                "ref_table_nref_table_ip_modeame" : ref_table_nref_table_ip_modeame,
+                "ref_table_Col_to_qc" : ref_table_Col_to_qc,
+                "case_sensitivity" : case_sensitivity}
+                ]
             }
-        json_file= json.dumps(dict_LOV_checks)
-        # f = open("lov_checks_x.json","w")
-        with open("abbvie/Json/lov_checks.json","w") as f:
+
+        try:
+            with open("C:\Python Project\Abbvie/Json/test.json","r") as f:
+                data = json.load(f)
+                f.close()
+                newDictName = "LOV_checks_" + str(len(data))
+                #updating the key name
+                dict_LOV_checks[newDictName]=dict_LOV_checks.pop('LOV_checks')
+                #concating old data with new dict
+                data[newDictName]=dict_LOV_checks
+        except FileNotFoundError:
+                newDictName = "LOV_checks_0"
+                dict_LOV_checks[newDictName]=dict_LOV_checks.pop('LOV_checks')
+                data=dict_LOV_checks
+
+        with open("C:\Python Project\Abbvie/Json/test.json","w") as f:
+            # print(len(data))
+            json_file= json.dumps(data)
             f.write(json_file)
-            #f.close()
+            f.close()
+
         return render_template('Test.html',source_table_name=source_table_name, source_table_ip_mode=source_table_ip_mode,source_table_Col_to_qc=source_table_Col_to_qc, dict_LOV_checks = dict_LOV_checks,json_file=json_file)
 
 if __name__=="__main__" :
