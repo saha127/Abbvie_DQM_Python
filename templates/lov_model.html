@@ -1,0 +1,281 @@
+
+    <!-- BREADCRUMB-->
+    {% extends "Layout.html" %}
+
+    {% block content %} 
+    
+    <!-- BREADCRUMB-->
+    <section class="au-breadcrumb m-t-75">
+        <div class="section__content section__content--p30">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="au-breadcrumb-content">
+                            <div class="au-breadcrumb-left">
+                                <span class="au-breadcrumb-span">You are here:</span>
+                                <ul class="list-unstyled list-inline au-breadcrumb__list">
+                                    <li class="list-inline-item active">
+                                        <a href="#">Home</a>
+                                    </li>
+                                    <li class="list-inline-item seprate">
+                                        <span>/</span>
+                                    </li>
+                                    <li class="list-inline-item">LOV / LOV check list by model</li>
+                                </ul>
+                            </div>
+                            <button class="au-btn au-btn-icon au-btn--green">
+                                <i class="zmdi zmdi-plus"></i>add item</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- END BREADCRUMB-->
+    
+
+        <!-- MAIN CONTENT-->
+        <div class="main-content" >
+            <div class="section__content section__content--p30">
+                <form action="" method="POST">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="card">
+                                    <div class="card-header">Source file</div>
+                                    <div class="card-body">
+                                       <!-- <form action="/submit_LOV" method="post"> -->
+                                        <div class="form-group">
+                                                {{ form.source_table_name.label(class="form-control-label") }}
+                                                {% if form.source_table_name.errors %}
+                                                    {{ form.source_table_name(class="form-control form-control-lg is-invalid") }}
+                                                    <div class="invalid-feedback">
+                                                        {% for error in form.source_table_name.errors %}
+                                                            <span>{{ error }}</span>
+                                                        {% endfor %}
+                                                    </div>
+                                                {% else %}
+                                                    {{ form.source_table_name(class="form-control form-control-lg") }}
+                                                {% endif %}
+                                        </div>
+                                        <div class="form-group">
+                                                {{ form.source_table_ip_mode.label(class="form-control-label") }}
+                                                {% if form.source_table_ip_mode.errors %}
+                                                    {{ form.source_table_ip_mode(class="form-control form-control-lg is-invalid") }}
+                                                    <div class="invalid-feedback">
+                                                        {% for error in form.source_table_ip_mode.errors %}
+                                                            <span>{{ error }}</span>
+                                                        {% endfor %}
+                                                    </div>
+                                                {% else %}
+                                                    {{ form.source_table_ip_mode(class="form-control form-control-lg") }}
+                                                {% endif %}
+                                        </div>
+                                        <div class="form-group">
+                                                {{ form.source_table_Col_to_qc.label(class="form-control-label") }}
+                                                {% if form.source_table_Col_to_qc.errors %}
+                                                    {{ form.source_table_Col_to_qc(class="form-control form-control-lg is-invalid") }}
+                                                    <div class="invalid-feedback">
+                                                        {% for error in form.source_table_Col_to_qc.errors %}
+                                                            <span>{{ error }}</span>
+                                                        {% endfor %}
+                                                    </div>
+                                                {% else %}
+                                                    {{ form.source_table_Col_to_qc(class="form-control form-control-lg") }}
+                                                {% endif %}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--source file ends-->
+
+                            <!--Reference File starts-->
+                            <div class="col-lg-6">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <strong>Reference File</strong>
+                                        <small> File or User Input</small>
+                                    </div>
+                                    <div class="card-body card-block">
+                                            <div class="form-group">
+                                                {{ form.ref_table_name.label(class="form-control-label") }}
+                                                {% if form.ref_table_name.errors %}
+                                                    {{ form.ref_table_name(class="form-control form-control-lg is-invalid") }}
+                                                    <div class="invalid-feedback">
+                                                        {% for error in form.ref_table_name.errors %}
+                                                            <span>{{ error }}</span>
+                                                        {% endfor %}
+                                                    </div>
+                                                {% else %}
+                                                    {{ form.ref_table_name(class="form-control form-control-lg") }}
+                                                {% endif %}
+                                            </div>
+                                            <div class="form-group">
+                                                    {{ form.ref_table_ip_mode.label(class="form-control-label") }}
+                                                    {% if form.ref_table_ip_mode.errors %}
+                                                        {{ form.ref_table_ip_mode(class="form-control form-control-lg is-invalid") }}
+                                                        <div class="invalid-feedback">
+                                                            {% for error in form.ref_table_ip_mode.errors %}
+                                                                <span>{{ error }}</span>
+                                                            {% endfor %}
+                                                        </div>
+                                                    {% else %}
+                                                        {{ form.ref_table_ip_mode(class="form-control form-control-lg") }}
+                                                    {% endif %}
+                                            </div>
+                                            <div class="form-group">
+                                                    {{ form.ref_table_Col_to_qc.label(class="form-control-label") }}
+                                                    {% if form.ref_table_Col_to_qc.errors %}
+                                                        {{ form.ref_table_Col_to_qc(class="form-control form-control-lg is-invalid") }}
+                                                        <div class="invalid-feedback">
+                                                            {% for error in form.ref_table_Col_to_qc.errors %}
+                                                                <span>{{ error }}</span>
+                                                            {% endfor %}
+                                                        </div>
+                                                    {% else %}
+                                                        {{ form.ref_table_Col_to_qc(class="form-control form-control-lg") }}
+                                                    {% endif %}
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Refernce File ends-->
+
+                        <!-- Other Req fields starts-->
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="card">
+                                        <div class="card-header">
+                                            <strong>Other required fields</strong>
+                                        </div>
+                                        <div class="card-body card-block">
+                                            <div class="form-group">
+                                                    {{ form.case_sensitivity.label(class="form-control-label") }}
+                                                    {% if form.case_sensitivity.errors %}
+                                                        {{ form.case_sensitivity(class="form-control form-control-lg is-invalid") }}
+                                                        <div class="invalid-feedback">
+                                                            {% for error in form.case_sensitivity.errors %}
+                                                                <span>{{ error }}</span>
+                                                            {% endfor %}
+                                                        </div>
+                                                    {% else %}
+                                                        {{ form.case_sensitivity(class="form-control form-control-lg") }}
+                                                    {% endif %}
+                                            </div>
+                                            <div class="form-group">
+                                                    {{ form.submit(class="btn btn-outline-info") }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                        </div> <!--/row-->
+                    </div> <!--/contaciner fluid-->
+                </form> 
+            </div>
+        
+                <!--show the table-->
+                <div class="row">
+                        <div class="col-lg-10 offset-lg-1" style="background-color: cornsilk; height: 50px; margin-bottom: 10px; align-content: center; font-size: 22px;">
+                           <b > Check Configuration table</b>
+                        </div>
+                </div>
+                <div class="row">
+                        <div class="col-lg-10 offset-lg-1">
+                            <div class="table-responsive table--no-card m-b-30">
+                                <table class="table table-borderless table-striped table-earning" style="font-size: 12px;">
+                                    <thead>
+                                        <tr>
+                                            <th style="font-size: 12px;">Source File Table Name1</th>
+                                            <th style="font-size: 12px;">Source File Column Input Mode</th>
+                                            <th style="font-size: 12px;">Source File Column to be Qced</th>
+                                            <th style="font-size: 12px;">Reference File Table Name</th>
+                                            <th style="font-size: 12px;">Reference File Column Input Mode</th>
+                                            <th style="font-size: 12px;">Reference File Column to be Qced</th>
+                                            <th style="font-size: 12px;">Case Sensitive</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>2018-09-29 05:57</td>
+                                            <td>100398</td>
+                                            <td>iPhone X 64Gb Grey</td>
+                                            <td class="text-right">$999.00</td>
+                                            <td class="text-right">1</td>
+                                            <td class="text-right">$999.00</td>
+                                            <td class="text-right">Yes</td>
+                                        </tr>
+                                        <tr>
+                                            <td>2018-09-28 01:22</td>
+                                            <td>100397</td>
+                                            <td>Samsung S8 Black</td>
+                                            <td class="text-right">$756.00</td>
+                                            <td class="text-right">1</td>
+                                            <td class="text-right">$756.00</td>
+                                            <td class="text-right">No</td>
+                                        </tr>
+                                        <tr>
+                                            <td>2018-09-27 02:12</td>
+                                            <td>100396</td>
+                                            <td>Game Console Controller</td>
+                                            <td class="text-right">$22.00</td>
+                                            <td class="text-right">2</td>
+                                            <td class="text-right">$44.00</td>
+                                            <td class="text-right">Yes</td>
+                                        </tr>
+                                        <tr>
+                                            <td>2018-09-26 23:06</td>
+                                            <td>100395</td>
+                                            <td>iPhone X 256Gb Black</td>
+                                            <td class="text-right">$1199.00</td>
+                                            <td class="text-right">1</td>
+                                            <td class="text-right">$1199.00</td>
+                                            <td class="text-right">Yes</td>
+                                        </tr>
+                                        <tr>
+                                            <td>2018-09-25 19:03</td>
+                                            <td>100393</td>
+                                            <td>USB 3.0 Cable</td>
+                                            <td class="text-right">$10.00</td>
+                                            <td class="text-right">3</td>
+                                            <td class="text-right">$30.00</td>
+                                            <td class="text-right">Yes</td>
+                                        </tr>
+                                        <tr>
+                                            <td>2018-09-29 05:57</td>
+                                            <td>100392</td>
+                                            <td>Smartwatch 4.0 LTE Wifi</td>
+                                            <td class="text-right">$199.00</td>
+                                            <td class="text-right">6</td>
+                                            <td class="text-right">$1494.00</td>
+                                            <td class="text-right">Yes</td>
+                                        </tr>
+                                        <tr>
+                                            <td>2018-09-24 19:10</td>
+                                            <td>100391</td>
+                                            <td>Camera C430W 4k</td>
+                                            <td class="text-right">$699.00</td>
+                                            <td class="text-right">1</td>
+                                            <td class="text-right">$699.00</td>
+                                            <td class="text-right">Yes</td>
+                                        </tr>
+                                        <tr>
+                                            <td>2018-09-22 00:43</td>
+                                            <td>100393</td>
+                                            <td>USB 3.0 Cable</td>
+                                            <td class="text-right">$10.00</td>
+                                            <td class="text-right">3</td>
+                                            <td class="text-right">$30.00</td>
+                                            <td class="text-right">Yes</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                </div>
+                <!--TABLE ends-->
+        
+            </div>
+           <!-- MAIN CONTENT ends-->
+
+    {%endblock%}

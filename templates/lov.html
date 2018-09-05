@@ -47,7 +47,7 @@
     <!-- MAIN CONTENT-->
     <div class="main-content" style="padding-top: 30px;">
         <div class="section__content section__content--p30">
-                <form action="/submit_LOV" method="post">
+        <form action="/submit_LOV" method="post" onsubmit="return Validate(this)" name="vform">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-6">
@@ -77,8 +77,10 @@
                                         </select>
                                     </div>
                                     <div class="form-group">
-                                        <label for="cc-number" class="control-label mb-1">Column to be QCed</label>
-                                        <input id="cc-number" name="source_table_Col_to_qc" type="tel" class="form-control cc-number identified visa">
+                                        <label for="cc-number" class="control-label mb-1">Column to be QCed.</label>
+                                        <input id="source_table_Col_to_qc" name="source_table_Col_to_qc" class="form-control cc-number identified visa">
+                                        <!-- <i id="error_source_table_Col_to_qc" style="color: red"></i> -->
+                                        <div id="error_source_table_Col_to_qc" style="color: red"></div>
                                     </div>
                                     <!-- <div>
                                         <button id="payment-button" type="submit" class="btn btn-lg btn-info btn-block">
@@ -117,7 +119,9 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="cc-number" class="control-label mb-1">Column to be QCed</label>
-                                        <input id="cc-number" name="ref_table_Col_to_qc" type="tel" class="form-control cc-number identified visa">
+                                        <input  name="ref_table_Col_to_qc" required id="ref_table_Col_to_qc"  class="form-control cc-number identified visa">
+                                        <!-- <i id="error_ref_table_Col_to_qc" style="color: red"></i> -->
+                                        <div id="error_ref_table_Col_to_qc"></div>
                                     </div>
                                 <!-- </form> -->
                             
@@ -261,6 +265,53 @@
     </div>
    <!-- MAIN CONTENT ends-->
 
+
+
+   <!--validation-->
+   <!-- <script>
+    function myValidation() {
+        var x, text;
+    
+        // Get the value of the input field with id="numb"
+        x = document.getElementById("source_table_Col_to_qc").value;
+        //alert("Please" +x);
+        // If x is Not a Number or less than one or greater than 10
+        if (isNaN(x) || x < 1 || x > 10) {
+            text = "Input not valid";
+            alert("n")
+            return false
+        } else {
+            //text = "Input OK";
+        }
+        document.getElementById("error_source_table_Col_to_qc").innerHTML = text;
+    }
+    </script> -->
+
+    <script>
+         var x, text, error1;
+        //alert("1");
+        // Get the value of the input field with id="numb"
+        x = document.getElementById("source_table_Col_to_qc").value;
+        error1=document.getElementById("error_source_table_Col_to_qc");
+        
+        x.addEventListener('blur', nameVerify, true);
+
+        function Validate() {
+            // validate username
+            alert("12");
+            debugger
+            if (x.value!="a") {
+                alert("blank");
+                x.style.border = "1px solid red";
+                document.getElementById('x').style.color = "red";
+                error1.textContent = "value is required";
+                x.focus();
+                return false;
+            }
+            alert("val of x is :" +x);
+        }
+
+    </script>
 
         
 
